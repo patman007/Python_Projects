@@ -10,7 +10,7 @@ game_still_going = True
 #Who won? or Tie?
 winner = None
 
-#Whos turn is it
+#Whos turn is it?
 current_player = "X"
 
 #Display Board of Tic Tac Toe board
@@ -25,8 +25,9 @@ def play_game():
     #Display initial board
     display_board()
 
-    #WHILE LOOP for the game still going
+    #While game still going
     while game_still_going:
+
         #Handle a single turn of an arbitary player
         handle_turn(current_player)
 
@@ -36,8 +37,7 @@ def play_game():
         #Flip to other player
         flip_player()
 
-    #IF STATEMENT
-    #The game has ended
+    #If the game has ended
     if winner == "X" or winner == "O":
         print(winner + " won.")
     elif winner == None:
@@ -45,9 +45,26 @@ def play_game():
 
 #Handle Turn Function
 def handle_turn(player):
+    print(player + "'s turn.")
     position = input("Choose a position from 1-9: ")
-    #Make sure the position starts at 1 instead of 0
-    position = int(position) - 1
+
+    #while the input is not valid
+    valid = False
+    while not valid:
+
+        #while input is not an integer
+        #Alternative could be regex here
+        while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+            position = input("Choose a position from 1-9: ")
+
+        #Make sure the position starts at 1 instead of 0
+        position = int(position) - 1
+
+        #if position is empty on the board
+        if board[position] == "-":
+            valid = True
+        else:
+            print('You cant go there. Go again')
 
     board[position] = player
     display_board()
@@ -84,9 +101,12 @@ def check_for_winner():
         winner = None
     return
 
+#Check Rows Function
 def check_rows():
+
     #Set up global variables
     global game_still_going
+
     #Check if any of rows have the same value without a dash
     row_1 = board[0] == board[1] == board[2] !="-"
     row_2 = board[3] == board[4] == board[5] !="-"
@@ -105,9 +125,12 @@ def check_rows():
             return board[6]
         return
 
+#Check Columns Function
 def check_columns():
-        #Set up global variables
+
+    #Set up global variables
     global game_still_going
+
     #Check if any of rows have the same value without a dash
     column_1 = board[0] == board[3] == board[6] !="-"
     column_2 = board[1] == board[4] == board[7] !="-"
@@ -116,6 +139,7 @@ def check_columns():
     #If any row does have a match, flag that there is a win
     if column_1 or column_2 or column_3:
         game_still_going = False
+
         #Return the winner (X or O)
         #We could use any element number besides listed here
         if column_1:
@@ -126,6 +150,7 @@ def check_columns():
             return board[2]
         return
 
+#Check Diagonals Function
 def check_diagonals():
             #Set up global variables
     global game_still_going
@@ -136,6 +161,7 @@ def check_diagonals():
     #If any row does have a match, flag that there is a win
     if diagonal_1 or diagonal_2:
         game_still_going = False
+
         #Return the winner (X or O)
         #We could use any element number besides listed here
         if diagonal_1:
@@ -146,14 +172,17 @@ def check_diagonals():
 
 #Check if Tie Function
 def check_if_tie():
+    global game_still_going
     if "-" not in board:
         game_still_going = False
     return
 
+#Flip Player Function
 def flip_player():
     #Global variable
     global current_player
-    #If the current player was X, then change it to O
+
+    #If current player was X, then change it to O
     if current_player == "X":
         current_player = "O"
     elif current_player =="O":
