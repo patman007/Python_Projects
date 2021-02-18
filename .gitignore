@@ -7,8 +7,16 @@ __pycache__/
 *.so
 
 # Data
-.pdf
-.csv
+*.gdb
+*.zip
+*.7z
+*.sqlite
+*.bak
+*.pptx
+*.pdf
+*.csv
+*.xls
+*.xlsx
 
 # Distribution / packaging
 .Python
