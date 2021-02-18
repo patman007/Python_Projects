@@ -1,0 +1,13 @@
+people = {
+    "first": ['Corey' 'Jane', 'John'],
+    "last": ['Schafer, 'Doe', 'Doe'],
+    "email: ['CoreyMSchafer@gmail.com', 'JaneDoe@email.com', 'JohnDoe@email.com']
+}
+
+keys: first, last, email
+Think of keys as the fields (columns) of a table.
+
+values: Corey   Schafer     CoreyMSchafer@gmail.com
+        Jane    Doe         JanDoe@email.com
+        John    Doe         JohnDoe@email.com
+Think of values as the rows of a table.
