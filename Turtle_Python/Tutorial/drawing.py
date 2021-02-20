@@ -9,7 +9,7 @@ pen = turtle.Turtle()
 pen.fillcolor('yellow')
 
 #start the fill Color
-pen.begin_full()
+pen.begin_fill()
 
 #drawing the circle of radius r
 pen.up()
