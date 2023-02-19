@@ -17,6 +17,7 @@ __pycache__/
 *.csv
 *.xls
 *.xlsx
+*.out
 
 # Distribution / packaging
 .Python
